@@ -12,13 +12,24 @@ namespace RoutingDemo.Controllers
     {
         private readonly HttpClient _client;
         private readonly HRContext _context;
-        public SkillsController(HttpClient client,HRContext context)
+        public SkillsController(HttpClient client, HRContext context)
         {
             _client = client;
             _context = context;
         }
 
-        [HttpGet("employee/{empid}")]
+
+        
+
+
+        //[HttpGet("{name:alpha:length(3,10)}/{age:range(18,60)}")]
+        ////  [HttpGet("{name:alpha:length(3,10)}/{age:int:range(18,60)}")]
+        //public IActionResult Get(string name,int age)
+        //{
+        //    return Ok($"U entered {name} , {age}yrs");
+        //}
+
+        [HttpGet("employee/{empid:int:min(1):max(100)}")]
         public async Task<IActionResult> GetSkills(int empid)
         {
             int eid = empid;

@@ -53,7 +53,7 @@ namespace RoutingDemo.Controllers
         }
 
         [HttpGet]
-        [Route("/enquired")]
+        [Route("/enquired")]//Absolute-- without api and controller naem
         public IActionResult StudentsEnquired()
         {
 

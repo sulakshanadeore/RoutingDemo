@@ -52,9 +52,47 @@ namespace RoutingDemo.Controllers
             return Ok($"Trying to delete {id}");
         }
 
+        [HttpGet]
+        [Route("/enquired")]
+        public IActionResult StudentsEnquired()
+        {
 
-        
+            var s = studs.Where(e => e.Status == "Enquired").ToList();
+            return Ok(s);
+        }
 
+        [HttpGet("{id}/{status}")]
+        //https://localhost:7052/api/Student/1/Enquired
+        public IActionResult GetStudentStatus(int id, string status)
+        {
+            var s = studs.Where(e => e.Status == "Enquired" && e.Id==id).First();
+            return Ok(s);
+
+        }
+
+
+        [HttpGet("{id}/studentstatus/{status}")]
+        //https://localhost:7052/api/Student/1/studentstatus/Enquired
+        public IActionResult GetStatus(int id, string status)
+        {
+            var s = studs.Where(e => e.Status == "Enquired" && e.Id == id).First();
+            return Ok(s);
+
+        }
+
+        [HttpGet("{id}/status")]
+        public IActionResult GetData(int id,string status) 
+        {
+            var s = studs.Where(e => e.Status == "Enquired" && e.Id == id).First();
+            return Ok(s);
+        }
+
+        [HttpGet("Rollno/{id}")]
+        public IActionResult GetData1(int id, string status)
+        {
+            var s = studs.Where(e => e.Status == "Enquired" && e.Id == id).First();
+            return Ok(s);
+        }
 
     }
 }
